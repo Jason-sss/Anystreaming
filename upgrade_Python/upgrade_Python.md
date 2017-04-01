@@ -15,10 +15,10 @@ _ssl _ssl.c
 -DUSE_SSL -I$(SSL)/include -I$(SSL)  /include/openssl  
 -L$(SSL)/lib -lssl -lcrypto
 ```
-  5. configure:  
+  5. configure
   
-     > _#这里一定要注意，解压完之后要设置enable-shared参数， 在wsgi.py 在web server中python 才能在apache或者Nginx运行_  
-     > 123
+  > _#这里一定要注意，解压完之后要设置enable-shared参数， 在wsgi.py 在web server中python 才能在apache或者Nginx运行_   
+  > 123
 ```
 ./configure --enable-shared
 ``` 
