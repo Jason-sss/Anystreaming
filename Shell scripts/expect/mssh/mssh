@@ -1,0 +1,67 @@
+#!/usr/bin/expect -f
+#This is a script for ssh to muti-servers to excute cmds automaticly
+#Though you need to exit the remote server by yourself
+
+set timeout 3
+
+##check sorce file 
+if { [lindex $argv 0]=="" } { 
+	puts "no linked file!"
+	puts "usage: mssh filename"
+	exit 1  
+}
+
+set sorce_file [lindex $argv 0]
+set f [ open $sorce_file r ]
+set n 1
+set user ""
+set pass ""
+set port ""
+set host ""
+
+#define the scripts to excute on remote servers
+#all the scripts should be saved in local server
+set shell_1 "/root/test"
+set shell_2 "/root/test2"
+set shell_3 ""
+
+while { [gets $f line]>=0 } {
+	if { $n==3 } { set user "$line" }	
+	if { $n==5 } { set port "$line" }
+        if { $n==7 } { set pass "$line" } 
+	if { $n==8 } { puts "user:$user,password:$pass,port:$port" }
+	if { $n>8 } { 
+		set host "$line"
+		puts "\r"
+		spawn bash -c "ssh -p $port $user@$host"
+#		expect "yes/no" {
+#			send "yes\r"
+#		}
+		expect "*assword:" {
+			send "$pass\r"
+		}
+		sleep 2
+		## type the cmds you want to excute on a remote server
+		expect "#" {
+			#excute the first shell script
+			send "$shell_1\r"
+			#expect "$shell_1:" { send "exit\r" }
+			interact
+			#excute the second shell script
+			#send "$shell_1\r"
+			#interact
+			#excute the third shell script
+			#send "sh $shell_3 >> log 2>&1"
+			#spawn ls
+			#interact
+
+		}
+	}
+	incr n
+}
+close $f
+
+
+puts "script excutes end."
+puts "exiting..."
+sleep .5

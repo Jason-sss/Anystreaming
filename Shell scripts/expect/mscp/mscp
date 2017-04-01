@@ -1,0 +1,114 @@
+#!/usr/bin/expect -f
+#This is a script for scp to muti servers or from muti servers
+
+##set timeout 
+set timeout 3
+
+##check sorce file 
+if { [lindex $argv 0]=="" } { 
+	puts "no linked file!"
+	puts "usage: mscp filename"
+	exit 1  
+}
+
+set sorce_file [lindex $argv 0]
+
+######################### file as scp sorce(from local to remote) ########################
+if { $sorce_file=="hosts.list" } {
+set f [ open $sorce_file r ]
+set n 1
+set user ""
+set pass ""
+set src "" 
+set path ""
+set port ""
+set host ""
+while { [gets $f line]>=0 } {
+		if { $n==3 } { set user "$line" }
+		if { $n==6 } { set pass "$line" }
+		if { $n==9 } { set src "$line" }
+		if { $n==12 } { set path "$line" }
+		if { $n==15 } { set port "$line" }
+		if { $n==16 } { puts "user:$user,password:**,sorce:$src,dest_path:$path,port:$port" }
+		if { $n>17 } {
+			set host "$line"
+			puts "\r"
+			## add "bash -c" to allow command to use wildcard like *? 
+			spawn bash -c "scp -r -P$port $src $user@$host:$path"
+
+			expect "yes/no" {
+				send "yes\r"
+			}
+
+			expect "*assword:" {
+        			send "$pass\r"
+				interact
+			}
+			
+#			expect "100%" {
+#				continue
+#			}
+		}
+		incr n
+}
+close $f
+
+}
+##################### excute scp sorce file(from local to remote) end######################
+
+
+######################### file as scp sorce(from remote to local) ########################
+if { $sorce_file=="hosts_r.list" } {
+set f [ open $sorce_file r ]
+set n 1
+set user ""
+set pass ""
+set src "" 
+set path ""
+set port ""
+set host ""
+while { [gets $f line]>=0 } {
+		if { $n==3 } { set user "$line" }
+		if { $n==6 } { set pass "$line" }
+		if { $n==9 } { set src "$line" }
+		if { $n==12 } { set path "$line" }
+		if { $n==15 } { set port "$line" }
+		if { $n==16 } { puts "user:$user,password:**,sorce:$src,dest_path:$path,port:$port" }
+		if { $n>17 } {
+			set host "$line"
+			puts "\r"
+			## add "bash -c" to allow command to use wildcard like *? 
+			spawn bash -c "scp -r -P$port $user@$host:$src $path"
+
+			expect "yes/no" {
+				send "yes\r"
+			}
+
+			expect "*assword:" {
+        			send "$pass\r"
+				interact
+			}
+			
+#			expect "100%" {
+#				continue
+#			}
+		}
+		incr n
+}
+close $f
+
+}
+##################### excute scp sorce file(from remote to local) end######################
+
+
+
+
+##################### show help page ######################################################
+if { [lindex $argv 0]=="--h" } {
+	puts "this is a scp script."
+	exit 0
+}
+##################### show help page end ##################################################
+
+#expect eof
+

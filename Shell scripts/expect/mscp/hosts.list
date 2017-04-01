@@ -1,0 +1,20 @@
+!!! you can add hosts by the end, but DO NOT change the format of this file !!!
+##user:username of remote hosts
+root
+
+##password
+1qaz2ws
+
+##sorce file: input the full path and full name of local file
+Mi*
+
+##dest_: destination pathpath to the remote hosts
+/root/
+
+#port
+22
+
+#hosts: add the hosts line by line
+192.168.1.181
+192.168.1.180
+127.0.0.1
