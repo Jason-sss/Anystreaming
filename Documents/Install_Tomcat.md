@@ -1,27 +1,27 @@
 ## Install Tomcat and Java in Linux Server
 ### Install versions: 
-> java: 1.7.0_80
+> java: 1.7.0_80  
 > Tomcat: 7.0
 ### packges
-> jdk-7u80-linux-x64.tar.gz
+> jdk-7u80-linux-x64.tar.gz  
 > apache-tomcat-7.0.69.tar.gz
 ### Installation
 ####  Java:
 ```sh
-1. tar -zxvf jdk-7u80-linux-x64.tar.gz
-2. mv jdk1.7.0_80 /usr/java1.7
-3. vi /etc/profile # add below to the end
+tar -zxvf jdk-7u80-linux-x64.tar.gz
+mv jdk1.7.0_80 /usr/java1.7
+vi /etc/profile # add below to the end
 	export JAVA_HOME=/usr/java1.7
 	export JAVA_BIN=$JAVA_HOME/bin
 	export PATH=$PATH:$JAVA_HOME/bin
 	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-4. source /etc/profile
+source /etc/profile
 ```
 
 ####Tomcat:
 ```sh
-1. tar -zxvf apache-tomcat-7.0.69.tar.gz
-2. mv apache-tomcat-7.0.69 /usr/local/tomcat7
+tar -zxvf apache-tomcat-7.0.69.tar.gz
+mv apache-tomcat-7.0.69 /usr/local/tomcat7
 ```
 
 ####NOTE:
