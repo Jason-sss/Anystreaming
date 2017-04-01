@@ -8,7 +8,7 @@ apt-get install gcc openssl zlib make checkinstall libreadline-gplv2-dev libncur
 ```  
 3. unarchive the package, enter into the installation directory
 4. > modify file: "Modules/Setup.dist"
-   > uncommon below lines:
+> uncommon below lines:
 ```
 SSL=/usr/lib/ssl  
 _ssl _ssl.c  
