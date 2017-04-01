@@ -17,7 +17,7 @@
   ```
   5. configure  
      _#这里一定要注意，解压完之后要设置enable-shared参数， 在wsgi.py 在web server中python 才能在apache或者Nginx运行_  
-  ```
+  ```shell
 ./configure --enable-shared
   ``` 
   6. install
