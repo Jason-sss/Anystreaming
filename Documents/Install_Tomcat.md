@@ -18,13 +18,13 @@ vi /etc/profile # add below to the end
 source /etc/profile
 ```
 
-####Tomcat:
+#### Tomcat:
 ```sh
 tar -zxvf apache-tomcat-7.0.69.tar.gz
 mv apache-tomcat-7.0.69 /usr/local/tomcat7
 ```
 
-####NOTE:
+#### NOTE:
 >check JAVA version: 
 ```sh
 java -version
