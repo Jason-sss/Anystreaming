@@ -1,14 +1,18 @@
 # Anystreaming
 ### 工作过程中的笔记记录及整理 @anystreaming @Jason Shen
 #### 各目录的内容说明
-> Documents:  
+> __Documents:__  
+
 工作相关的安装文档，学习笔记等. 
 
-> Shell scripts:  
+> __Shell scripts:__  
+
 工作中写的各种shell脚本.  
 
-> Python:  
+> __Python:__  
+
 工作中写的各种python程序和脚本.  
 
-> C:  
+> __C:__  
+
 工作中写的各种C相关的程序.  
