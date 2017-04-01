@@ -1,3 +1,0 @@
-##Upgrade Python to 3.xx on Linux Server
-
-###Ubuntu 12.04 Server
