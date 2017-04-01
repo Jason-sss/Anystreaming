@@ -16,9 +16,9 @@
     -L$(SSL)/lib -lssl -lcrypto
   ```
   5. configure
+     这里一定要注意，解压完之后要设置enable-shared参数， 在wsgi.py 在web server中python 才能在apache或者Nginx运行
   ```./configure --enable-shared
-  ```
-    这里一定要注意，解压完之后要设置enable-shared参数， 在wsgi.py 在web server中python 才能在apache或者Nginx运行
+  ``` 
   6. install
   ```
     make #check if there are any warnings or errors  
