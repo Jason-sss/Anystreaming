@@ -1,4 +1,4 @@
-## Install Tomcat and Java in Linux Server
+## Install Tomcat and Java on Linux Server
 ### Install versions: 
 > java: 1.7.0_80  
 > Tomcat: 7.0
