@@ -32,7 +32,7 @@ checkinstall
 2. prepare installation enviroment:
 ```
 yum install gcc openssl zlib make readline-devel ncurses-devel openssl-devel sqlite-devel tk-devel gdbm-devel glibc-devel bzip2-devel
-```  
+```
 3. unarchive the package, enter into the installation directory  
 4. modify file: "Modules/Setup.dist"  
  uncommon below lines:
